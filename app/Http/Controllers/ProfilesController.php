@@ -12,14 +12,14 @@ class ProfilesController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($user)
+    public function index(User $user)
     {
-        //The dd method represent development and the main takes is to echo out all variable before terminating the process.
-        $user = User::find($user);
+        return view('profiles.index', compact('user'));   
+    }
 
-        return view('home', [
-                'user' => $user,
-        ]);   
+    public function edit(User $user)    
+    {
+        return view('profiles.edit', compact('user'));
     }
 }
     

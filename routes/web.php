@@ -17,4 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/p/create', 'PostsController@create');
+Route::get('/p/{post}', 'PostsController@show');
+Route::post('/p', 'PostsController@store');
+
+// Route to show user profile
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+
+// Route to  edit user profile
+Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+
+// Route to  update user profile
+Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upadte');
+
+
