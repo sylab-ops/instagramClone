@@ -27,7 +27,7 @@ class PostsController extends Controller
         $imagePath = request('image')->store('uploads','public');
 
             //Intervention/image is a php image library that is used to manipulated images in PHP frameworks
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500, 1500);
         $image->save();
 
         auth()->user()->posts()->create([
@@ -37,13 +37,12 @@ class PostsController extends Controller
             return redirect('/profile/' . auth()->user()->id);
     }
 
-    //On click method to display Image post caption 
-    // Adding the \APP\Post is called => Route model binding, this wil make laravel fetch the post details 
+    //On click method to display Image post caption
+    // Adding the \APP\Post is called => Route model binding, this wil make laravel fetch the post details
     // from the database
-    public function show(\App\Post $post) 
+    public function show(\App\Post $post)
     {
             // The method compact does match the variable post to it actual post value
             return view('posts.show', compact('post'));
     }
 }
- 
